@@ -1,0 +1,61 @@
+{% extends 'super/base.html' %}
+
+{% load static %}
+{% block content %}
+{% include "super/navbar.html" %}
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container ">
+        <h1 class="display-5">Top Highlights</h1>
+        <a href="" class="btn btn-primary">Check out latest News</a>
+    </div>
+</div>
+
+
+<div class="row">
+	{% for item in article %}
+    <div class="col-3 ">
+        <div class="card bg-dark text-white h-80" style="width: 20rem;">
+            <img class="card-img-top" src="{{ item.picture.url }}" alt="Card image cap">
+            <div class="card-body">
+                <p>{{ item.date_created }}</p>
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text text-left">{{ item.body }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            </div>
+            {% if user.is_authenticated and user.organiser %}
+             <a href="{% url 'update_sport' item.id %}" class="btn btn-primary">Update</a>
+             <a href="{% url 'delete_news' item.id %}" class="btn btn-primary">Delete</a>
+            {% endif %}
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="pagination justify-content-center">
+    <span class="step-links">
+        {% if article.has_previous %}
+            <a href="?page=1 " class="btn btn-primary btn-info">&laquo; first</a>
+            <a href="?page={{ article.previous_page_number }" class="btn btn-primary btn-info">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ article.number }} of {{ article.paginator.num_pages }}.
+        </span>
+
+        {% if article.has_next %}
+            <a href="?page={{ article.next_page_number }}" class="btn btn-primary btn-info">next</a>
+            <a href="?page={{ article.paginator.num_pages }}" class="btn btn-primary btn-info">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<p> add comments</p>
+
+{% include 'super/footer.html' %}
+
+
+{% endblock %}

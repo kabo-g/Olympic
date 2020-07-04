@@ -1,0 +1,35 @@
+{% extends 'super/base.html' %}
+
+{% load static %}
+{% block content %}
+{% include 'super/navbar.html' %}
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container ">
+        <h1 class="display-5">Olympic Sports</h1>
+        <hr>
+        <a href="{% url 'news' %}" class="btn btn-primary">Check out latest News</a>
+    </div>
+</div>
+
+
+<div class="row">
+	{% for item in sport %}
+    <div class="col-2 ">
+        <div class="card bg-dark text-white h-80" style="width: 13rem;">
+            <img class="card-img-top img-thumbnail" src="{{ item.picture.url }}" alt="Card image cap">
+            <div class="card-body">
+                <a href="{% url 'sports' %}" class="btn btn-primary">{{item.sport_name}}</a>
+            </div>
+            {% if user.is_authenticated and user.organiser %}
+             <a href="{% url 'update_sport' item.id %}" class="btn btn-primary">Update</a>
+             <a href="{% url 'delete_sport' item.id %}" class="btn btn-primary">Delete</a>
+            {% endif %}
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+{% include 'super/footer.html' %}
+{% endblock %}

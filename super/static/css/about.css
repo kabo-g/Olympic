@@ -1,0 +1,20 @@
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+
+
+.img-wrap{
+	width: 100%;
+}
+
+.img-wrap img{
+	width: 100%;
+	padding: 10px;
+	border-radius:50%; 
+	box-shadow: 0 0 10px #999999;
+	margin-top: 20px;
+}

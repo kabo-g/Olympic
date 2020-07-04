@@ -1,0 +1,35 @@
+{% extends "super/base.html" %}
+
+
+{% block content %}
+
+  <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md mx-auto">
+              <div class="card">
+                <div class="card-header text-black">
+                  <h2 class="text-center">Log in as </h2>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                       <div class="col-lg-6">
+                        <a type="button" class="btn btn-block btn-success" href="{% url 'local_login' %}">Local Resident</a>
+                       </div>
+                       <div class="col-lg-6">
+                        <a type="button" class="btn btn-block btn-info " href="{% url 'organiser_login' %}">Organiser</a>
+                       </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-header text-black">
+                  <a type="button" class="btn btn-block btn-success" href="{% url 'welcome' %}">Go Back</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+{% endblock %}

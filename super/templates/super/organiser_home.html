@@ -1,0 +1,72 @@
+{% extends 'super/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include 'super/navbar.html' %}
+<p class="mt-5"></p>
+
+<div class="jumbotron bg-dark">
+    <div class="card-deck">
+  <div class="card bg-faded">
+    <div class="card-body">
+      <h1 class="card-title text-center text-primary font-weight-bolder">Courses</h1>
+      <hr>
+      <h1 class="card-text text-center text-success font-weight-bolder">{{ total_courses }}</h1>
+    </div>
+  </div>
+  <div class="card bg-faded">
+    <div class="card-body">
+      <h1 class="card-title text-center text-primary font-weight-bolder">Enrolled Students</h1>
+      <hr>
+      <h1 class="card-text text-center text-success font-weight-bolder">{{ total_courses }}</h1>
+    </div>
+  </div>
+  <div class="card bg-faded">
+    <div class="card-body">
+      <h1 class="card-title text-center text-primary font-weight-bolder">Students</h1>
+      <hr>
+      <h1 class="card-text text-center text-success font-weight-bolder">{{ total_students }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="row mt-5">
+  <div class="col">
+      <a href="{% url 'add_course' %}" class="btn btn-info btn-block">Add Course</a>
+  </div>
+  <div class="col">
+      <a href="{% url 'add_sport' %}" class="btn btn-info btn-block">Add Sport</a>
+  </div>
+  <div class="col">
+      <a href="{% url 'add_schedule' %}" class="btn btn-info btn-block">Add Schedule</a>
+  </div>
+  <div class="col">
+      <a href="{% url 'add_news' %}" class="btn btn-info btn-block">Add Article</a>
+  </div>
+</div>
+
+  <div class="row mt-5">
+  <div class="col">
+      <a href="{% url 'add_lecturer' %}" class="btn btn-info btn-block">Add Lecturer</a>
+  </div>
+  <div class="col">
+      <a href="{% url 'add_venue' %}" class="btn btn-info btn-block">Add Venue</a>
+  </div>
+  <div class="col">
+      <a href="{% url 'add_event' %}" class="btn btn-info btn-block">Add Event</a>
+  </div>
+</div>
+</div>
+</div>
+
+<div>
+    student report
+</div>
+{% endblock %}

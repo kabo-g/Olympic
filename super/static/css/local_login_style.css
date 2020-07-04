@@ -1,0 +1,34 @@
+.login-container{
+	height: 100vh;
+	width: 100%;
+}
+
+.login-form{
+	height: 100%;
+	width: 370px;
+	padding: 15px;
+	margin: auto;
+
+}
+
+.form-control{
+	font-size: 15px;
+	min-height: 48px;
+	font-weight: 500;
+}
+
+.form-control:focus{
+	border-color: #723dbe;
+
+}
+
+.forgot-link{
+	font-size: 13px;
+
+}
+
+.forgot-link label{
+	margin-bottom: 0;
+
+}
+

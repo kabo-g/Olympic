@@ -1,0 +1,24 @@
+{% extends "super/base.html" %}
+
+
+{% block content %}
+{% include "super/navbar.html" %}
+
+<br class="mt-4">
+<div class="container">
+    <div class="card col-4 border-warning mt-5 align-items-center">
+    {% for e in mycourse %}
+    <div class="jumbotron-fluid bg-transparent">
+        <div class="card-body">
+        <h1 class="card-title">{{ e.course }}</h1>
+        <p class="card-text">Facilitator: {{ e.lecturer }}</p>
+        <p class="card-text">{{ e.description }}</p>
+        <p class="card-text">Enrolled on {{e.enrol_date}}</p>
+    </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% include "super/footer.html" %}
+{% endblock %}

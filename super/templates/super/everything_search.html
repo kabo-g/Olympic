@@ -1,0 +1,33 @@
+{% extends "super/base.html" %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include "super/navbar.html" %}
+
+<div class="container mt-3 pt-5 mb-3 pb-5">
+	<p class="alert alert-success alert-dismissible">Your results</p>
+
+	{% for a in article %}
+		<p><a href="{% url 'news' %}"> {{ a.title }}</a></p>
+	{% endfor %}
+
+	{% for s in sport %}
+		<p><a href="{% url 'sports' %}">{{ s.sport_name }}</a></p>
+	{% endfor %}
+
+	{% for v in venue %}
+		<p><a href="{% url 'sports' %}">{{ v.venue_name }}<a/></p>
+	{% endfor %}
+
+	{% for e in event %}
+		<p><a href="{% url 'events' %}"> {{ e.event_name }}</a></p>
+	{% endfor %}
+
+</div>
+
+
+{% include "super/footer.html" %}
+{% endblock %}

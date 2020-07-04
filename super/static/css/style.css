@@ -1,0 +1,37 @@
+
+.carousel-caption{
+	position: absolute;
+	left: 25%;
+	width: 50%;
+	top: 2%;
+	margin-left: 15%;
+	text-align: left;
+}
+.carousel-caption h3{
+	font-size: 5em;
+	color: #E66F1F;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pd-password-valid{
+	color: green;
+}
+.pd-password-invalid{
+	color: red;
+}
+.pd-password-invalid:before{
+	position: relative;
+	left: -5px;
+	content: "x";
+}
+.pd-password-message h3{
+	font-size: 32pt;
+	margin-top: 10px;
+}
+.pd-password-message p{
+	margin: 7px 0 0 0;
+}

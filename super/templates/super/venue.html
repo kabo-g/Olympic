@@ -1,0 +1,66 @@
+{% extends "super/base.html" %}
+
+{% load static %}
+
+{% block content %}
+{% include "super/navbar.html" %}
+<h1 class="tk-page__heading mt-3 pt-5 mb-5">
+            Olympic Venues
+</h1>
+<div class="container justify-content-center">
+  <div class="card bg-dark text-white h-50" style="width: 70rem;">
+            <img class="card-img-top" src="{{ item.picture.url }}" alt="Card image cap">
+            <div class="card-body">
+                <p>{{ item.venue_name }}</p>
+                <h5 class="card-title">{{ item.capacity }} Seats</h5>
+                <p class="card-text text-left">{{ item.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            
+        </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-4">
+  	{% for item in venue %}
+        <div class="card bg-dark text-white h-25" style="width: 10rem;">
+            <img class="card-img-top" src="{{ item.picture.url }}" alt="Card image cap">
+            <div class="card-body">
+                <p>{{ item.venue_name }}</p>
+                <h5 class="card-title">{{ item.capacity }} Seats</h5>
+                <p class="card-text text-left">{{ item.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            {% if user.is_authenticated and user.organiser %}
+             <a href="" class="btn btn-primary">Update</a>
+             <a href="{% url 'delete_venue' item.id %}" class="btn btn-primary">Delete</a>
+             {%if error%}
+                <h2>Cannot be deleted its in use</h2>
+             {%endif%}
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="pagination justify-content-center">
+    <span class="step-links">
+        {% if venue.has_previous %}
+            <a href="?page=1 " class="btn btn-primary btn-info">&laquo; first</a>
+            <a href="?page={{ venue.previous_page_number }" class="btn btn-primary btn-info">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ venue.number }} of {{ venue.paginator.num_pages }}.
+        </span>
+
+        {% if venue.has_next %}
+            <a href="?page={{ venue.next_page_number }}" class="btn btn-primary btn-info">next</a>
+            <a href="?page={{ venue.paginator.num_pages }}" class="btn btn-primary btn-info">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% include "super/footer.html" %}
+{% endblock %}

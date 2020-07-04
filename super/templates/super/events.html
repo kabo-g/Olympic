@@ -1,0 +1,24 @@
+{% extends "super/base.html" %}
+
+
+{% block content %}
+{% include "super/navbar.html" %}
+<div class="jumbotron-fluid pt-5 mt-3 w-75 text-center">
+	{% for e in event %}
+	<h4>{{ e.event_name }}</h4>
+	<p>{{ e.date_created }}</p>
+	<img class="card-img-top" src="{{ e.picture.url }}" alt="Card image cap">
+	<p>{{ e.venue }}</p>
+	<p>{{ e.start_date }}</p>
+	<p>{{ e.end_date }}</p>
+	<p>{{ e.description }}</p>
+	{% if user.is_authenticated and user.organiser %}
+             <a href="" class="btn btn-primary">Update</a>
+             <a href="{% url 'delete_event' e.id %}" class="btn btn-primary">Delete</a>
+            {% endif %}
+{% endfor %}
+	
+</div>
+
+{% include "super/footer.html" %}
+{% endblock %}
